@@ -1,10 +1,10 @@
-import type React from "react"
-import { ChevronRight } from "lucide-react"
+import type React from "react";
+import { ChevronRight } from "lucide-react";
 
 interface AnimatedShinyButtonProps {
-  children: React.ReactNode
-  className?: string
-  url?: string
+  children: React.ReactNode;
+  className?: string;
+  url?: string;
 }
 
 export function AnimatedShinyButton({
@@ -14,7 +14,7 @@ export function AnimatedShinyButton({
 }: AnimatedShinyButtonProps) {
   return (
     <>
-      <style jsx>{`
+      <style>{`
         @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap");
 
         @property --gradient-angle {
@@ -66,8 +66,7 @@ export function AnimatedShinyButton({
           border: 1px solid transparent;
           border-radius: 0.5rem;
           color: var(--shiny-cta-fg);
-          background:
-            linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
+          background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
               padding-box,
             conic-gradient(
                 from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
@@ -80,8 +79,8 @@ export function AnimatedShinyButton({
               border-box;
           box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
           transition: var(--transition);
-          transition-property:
-            --gradient-angle-offset, --gradient-percent, --gradient-shine;
+          transition-property: --gradient-angle-offset, --gradient-percent,
+            --gradient-shine;
         }
 
         /* Link-specific styles */
@@ -176,8 +175,7 @@ export function AnimatedShinyButton({
         .shiny-cta-link,
         .shiny-cta-link::before,
         .shiny-cta-link::after {
-          animation:
-            var(--animation) var(--duration),
+          animation: var(--animation) var(--duration),
             var(--animation) calc(var(--duration) / 0.4) reverse paused;
           animation-composition: add;
         }
@@ -254,5 +252,5 @@ export function AnimatedShinyButton({
         </button>
       )}
     </>
-  )
+  );
 }

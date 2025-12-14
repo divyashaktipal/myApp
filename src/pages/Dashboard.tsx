@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import ToDo from "./ToDo";
 import { BlurInText } from "@/components/ui/blur-in-text";
-import { Card, CardContent } from "@/components/ui/glass/card";
+// import { Card, CardContent } from "@/components/ui/glass/card";
 import { ChartAreaInteractive } from "@/components/charts/ChartAreaInteractive";
 import { Calendar } from "@/components/ui/calendar";
 import { SignupForm } from "../components/login/SignupForm";
@@ -25,9 +25,7 @@ export default function Dashboard() {
         <p className="mb-4 text-sm text-gray-500">
           An example of an interactive area chart component.
         </p>
-        <CardContent>
-          <ChartAreaInteractive />
-        </CardContent>
+        <ChartAreaInteractive />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8 ">
@@ -35,9 +33,8 @@ export default function Dashboard() {
         <div className="border p-4 rounded-md shadow hover:scale-105 transition-all duration-300 ease-in-out">
           <h2 className="text-lg font-semibold mb-2  ">To-Do List</h2>
           <p className="mb-4 text-sm text-gray-500">This is basic TO-DO App.</p>
-          <Card>
-            <ToDo />
-          </Card>
+
+          <ToDo />
         </div>
 
         {/* card-3(Bar chart) */}
@@ -53,15 +50,14 @@ export default function Dashboard() {
         <div className="border p-4 rounded-md shadow h-fit hover:scale-105 transition-all duration-300 ease-in-out">
           <h2 className="text-lg font-semibold mb-2">Calendar</h2>
           <p className="mb-4 text-sm text-gray-500">A Simple Calender</p>
-          <CardContent>
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border shadow-sm mx-auto mt-5"
-              captionLayout="dropdown"
-            />
-          </CardContent>
+
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            className="rounded-md border shadow-sm mx-auto mt-5"
+            captionLayout="dropdown"
+          />
         </div>
 
         {/* card-5(Signupu form) */}

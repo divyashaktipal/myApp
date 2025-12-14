@@ -32,7 +32,7 @@ export default function ToDo() {
     setTask("");
   };
 
-  const deleteTask = (id) => {
+  const deleteTask = (id: number) => {
     setTasks(tasks.filter((t) => t.id !== id));
   };
 

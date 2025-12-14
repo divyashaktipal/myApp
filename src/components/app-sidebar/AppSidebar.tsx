@@ -14,8 +14,6 @@ import {
   Settings,
   Users,
   Contact,
-  Bell,
-  Book,
   BookAIcon,
   HelpCircle,
 } from "lucide-react";
