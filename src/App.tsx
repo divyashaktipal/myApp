@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import Docs from "./pages/Docs";
 import Signup from "./pages/Signup";
 import Login from "../src/pages/Login";
+import Notifications from "./pages/Notification";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
                 <Route path="/docs" element={<Docs />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/notifications" element={<Notifications />} />
                 <Route path="*" element={<Dashboard />} />
               </Routes>
             </main>

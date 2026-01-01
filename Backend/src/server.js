@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoutes from "../src/routes/auth.js";
+import notificationRoutes from "../src/routes/notificationRoutes.js";
 import connectDB from "../src/config/db.js";
 import cors from "cors";
 
@@ -28,7 +29,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("API is running");
 });
+
 app.use("/api/auth", authRoutes);
+app.use("/api/notifications", notificationRoutes);
 
 app.listen(8000, () => {
   console.log("Server is running on port 8000");
