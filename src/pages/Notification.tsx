@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Axios from "axios";
+import axios from "axios";
 
 interface Notification {
   id: number;
@@ -12,22 +12,22 @@ function Notifications() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const res = await Axios.get("http://localhost:8000/api/notifications", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setNotifications(res.data);
-      } catch (err: any) {
-        setError("Failed to fetch notifications");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
+    const es = new EventSource(
+      "http://localhost:8000/api/notifications/stream"
+    );
+
+    es.onopen = () => {
+      console.log("SSE connected");
+      setLoading(false);
     };
 
-    fetchNotifications();
+    es.onmessage = (event) => {
+      console.log("Incoming notification", event.data);
+      const data = JSON.parse(event.data);
+      setNotifications((prev) => [data, ...prev]);
+    };
+
+    return () => es.close();
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -35,7 +35,7 @@ function Notifications() {
 
   return (
     <div>
-      <h2>Notifications</h2>
+      <h2 className="text-2xl font-bold mb-4 mt-10 ml-50">Notifications</h2>
       <ul>
         {notifications.map((notif) => (
           <li key={notif.id}>{notif.message}</li>
